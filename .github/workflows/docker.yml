@@ -1,0 +1,19 @@
+name: Docker CI/CD
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Build frontend
+        run: docker build -t frontend ./frontend
+
+      - name: Build backend
+        run: docker build -t backend ./backend
